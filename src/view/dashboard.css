@@ -1,0 +1,8 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+    -fx-background-color: #6A5ACD;
+    -fx-background-radius: 0 50 0 0;
+}
