@@ -6,8 +6,13 @@
 package cloud;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.JOptionPane;
+
+import models.User;
 
 /**
  *
@@ -17,19 +22,39 @@ public class Actions {
     private final Connect conn = new Connect();
     
     private final String insertUser = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
-    public boolean createUser(String name, String email, String password) {
+    private final String userList = "SELECT * FROM users";
+    public boolean createUser(User user) {
         try {
             // conecta ao banco de dados
             PreparedStatement prepareStatement;
             prepareStatement = conn.getConnection().prepareStatement(insertUser);
-            prepareStatement.setString(1, name);
-            prepareStatement.setString(2, email);
-            prepareStatement.setString(3, password);
+            prepareStatement.setString(1, user.getUserName());
+            prepareStatement.setString(2, user.getUserEmail());
+            prepareStatement.setString(3, user.getUserPassword());
             prepareStatement.execute();
             return true;
         } catch (SQLException e) {
              JOptionPane.showMessageDialog(null, "Erro ao cadastrar novo usuário" + e.getMessage());
              return false;
         }   
+    }
+    
+    public ArrayList<User> userList(){
+        ArrayList<User> user_list = new ArrayList<>();
+        
+        try {
+            PreparedStatement prepareStatement;
+            prepareStatement = conn.getConnection().prepareStatement(userList);
+            
+            ResultSet rs = prepareStatement.executeQuery();
+            
+            while (rs.next()) { //enquanto houver registro
+		User user = new User(rs.getString("name"),rs.getString("email"), rs.getString("password"));
+		user_list.add(user); 
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return user_list;
     }
 }

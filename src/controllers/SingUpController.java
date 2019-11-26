@@ -1,4 +1,4 @@
-package cloud;
+package controllers;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -6,6 +6,9 @@ package cloud;
  */
 
 
+import cloud.Actions;
+import cloud.Main;
+import cloud.MetaData;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -13,6 +16,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+
+import models.User;
 
 /**
  * FXML Controller class
@@ -31,8 +36,9 @@ public class SingUpController implements Initializable {
 
     @FXML
     void handleSingUp(ActionEvent event) {
-        Actions user = new Actions();
-        user.createUser(input_username.getText(), input_email.getText(), input_password.getText());
+        Actions action = new Actions();
+        User user = new User(input_username.getText(), input_email.getText(), input_password.getText());
+        action.createUser(user);
     }
 
     @Override
