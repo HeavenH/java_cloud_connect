@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DashboardController">
+   <children>
+      <VBox prefHeight="600.0" prefWidth="298.0" styleClass="container" stylesheets="@dashboard.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="115.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/howling-fox-under-full-moon-outline.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="100.0" top="50.0" />
+               </VBox.margin>
+            </ImageView>
+            <Button mnemonicParsing="false" prefHeight="59.0" prefWidth="303.0" styleClass="btn" stylesheets="@dashboard.css" text="Dashboard">
+               <font>
+                  <Font name="Ebrima Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="303.0" styleClass="btn" stylesheets="@dashboard.css" text="Cadastrar Novo">
+               <font>
+                  <Font name="Ebrima Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button layoutX="10.0" layoutY="128.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="303.0" styleClass="btn" stylesheets="@dashboard.css" text="Listar usuários">
+               <font>
+                  <Font name="Ebrima Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button layoutX="10.0" layoutY="187.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="303.0" styleClass="btn" stylesheets="@dashboard.css" text="Perfil">
+               <font>
+                  <Font name="Ebrima Bold" size="14.0" />
+               </font></Button>
+            <Button layoutX="10.0" layoutY="246.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="303.0" styleClass="btn" stylesheets="@dashboard.css" text="Sair">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font></Button>
+            <Button layoutX="10.0" layoutY="69.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="303.0" styleClass="btn" stylesheets="@dashboard.css" text="Configurações">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <TextArea layoutX="322.0" layoutY="397.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="44.0" prefWidth="343.0" promptText="Dados do usuário" />
+      <Button layoutX="695.0" layoutY="397.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="113.0" text="Cadastrar">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <GridPane layoutX="322.0" layoutY="441.0" prefHeight="443.0" prefWidth="858.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="811.0" minWidth="0.0" prefWidth="0.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="858.0" minWidth="10.0" prefWidth="858.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="216.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="399.0" minHeight="10.0" prefHeight="399.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TableView fx:id="table" prefHeight="399.0" prefWidth="794.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+              <columns>
+                <TableColumn fx:id="col_name" prefWidth="75.0" text="Usuário" />
+                <TableColumn fx:id="col_email" prefWidth="75.0" text="Email" />
+                  <TableColumn fx:id="col_password" prefWidth="75.0" text="Password" />
+              </columns>
+            </TableView>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,10 @@
+.mainFxmlClass {
+    -fx-background-color: #6A5ACD;
+}
+.container {
+    -fx-background-color: #3F2B63;
+}
+.btn {
+    -fx-background-color: #3F2B63;
+    -fx-text-fill: #FFFFFF;
+}
