@@ -14,6 +14,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import models.User;
+import cloud.Actions;
+
+import javafx.scene.control.TableView;
 
 /**
  * FXML Controller class
@@ -22,26 +25,34 @@ import models.User;
  */
 public class DashboardController implements Initializable {
     
-    @FXML
-    private TableColumn<User, String> col_id;
+    private Actions user_action = new Actions();
     
     @FXML
-    private TableColumn<?, ?> col_username;
+    private TableView<User> table;
     
-    
-        private ObservableList<User> users = FXCollections.observableArrayList();
-    /**
-     * Initializes the controller class.
-     * @param url
-     * @param rb
-     */
+    //FXML dos input field
 
+    @FXML
+    private TableColumn<User, String> col_name;
+
+    @FXML
+    private TableColumn<User, String> col_email;
+
+    @FXML
+    private TableColumn<User, String> col_password;
+
+    private ObservableList<User> users = FXCollections.observableArrayList();
         
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        col_id.setCellFactory(new PropertyValueFactory<>("id"));
-        col_username.setCellFactory(new PropertyValueFactory<>("name"));
-        // TODO
-    }    
-    
+        Actions action = new Actions();
+      
+        col_name.setCellValueFactory(new PropertyValueFactory<>("username"));
+        col_email.setCellValueFactory(new PropertyValueFactory<>("email"));
+        col_password.setCellValueFactory(new PropertyValueFactory<>("password"));      
+        
+        users.addAll(action.userList());
+        table.setItems(users);
+    }
+       
 }

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SingUpController">
+    <stylesheets>
+        <URL value="@singup.css" />
+    </stylesheets>
+   <children>
+      <ImageView fitHeight="100.0" fitWidth="150.0" layoutX="259.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Downloads/howling-fox-under-full-moon-outline%20(1).png" />
+         </image>
+      </ImageView>
+      <Label layoutX="220.0" layoutY="194.0" prefHeight="56.0" prefWidth="178.0" text="Cadastre-se">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <TextField fx:id="input_username" layoutX="54.0" layoutY="300.0" prefHeight="48.0" prefWidth="510.0" promptText="Enter Username" />
+      <TextField fx:id="input_email" layoutX="54.0" layoutY="358.0" prefHeight="48.0" prefWidth="510.0" promptText="Enter E-mail" />
+      <JFXButton layoutX="155.0" layoutY="500.0" onAction="#handleSingUp" prefHeight="48.0" prefWidth="309.0" styleClass="btn-login" stylesheets="@singup.css" text="Sing Up">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </JFXButton>
+      <PasswordField fx:id="input_password" layoutX="54.0" layoutY="422.0" prefHeight="48.0" prefWidth="510.0" promptText="Enter Password" />
+      <Label layoutX="182.0" layoutY="558.0" prefHeight="29.0" prefWidth="191.0" text="Already have an account?">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="351.0" layoutY="563.0" onMouseClicked="#back_to_menu" text="Sing In Now" textFill="#3f1194">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+   </children>
+</AnchorPane>

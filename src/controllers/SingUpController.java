@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javax.swing.JOptionPane;
 
 import models.User;
 
@@ -39,6 +40,7 @@ public class SingUpController implements Initializable {
         Actions action = new Actions();
         User user = new User(input_username.getText(), input_email.getText(), input_password.getText());
         action.createUser(user);
+        JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!");
     }
 
     @Override

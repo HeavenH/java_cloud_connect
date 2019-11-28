@@ -9,7 +9,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collections;
 import javax.swing.JOptionPane;
 
 import models.User;
@@ -23,6 +22,7 @@ public class Actions {
     
     private final String insertUser = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
     private final String userList = "SELECT * FROM users";
+    private final String query_user = "SELECT (email,password) FROM users WHERE email = (?), password = (?)";
     public boolean createUser(User user) {
         try {
             // conecta ao banco de dados
@@ -48,7 +48,7 @@ public class Actions {
             
             ResultSet rs = prepareStatement.executeQuery();
             
-            while (rs.next()) { //enquanto houver registro
+            while (rs.next()) {
 		User user = new User(rs.getString("name"),rs.getString("email"), rs.getString("password"));
 		user_list.add(user); 
             }
@@ -57,4 +57,24 @@ public class Actions {
         }
         return user_list;
     }
+    
+    public User queryUser(String email, String password){
+        User user = null;
+        try {
+            PreparedStatement query;
+            query = conn.getConnection().prepareStatement(query_user);
+            
+            query.setString(1, email);
+            query.setString(2, password);
+            
+            ResultSet rs = query.executeQuery();
+            rs.next();
+            
+            user = new User(rs.getString("email"), rs.getString("password"));
+            
+        } catch (SQLException e){
+            System.err.println(e);            
+        }
+        return user;
+    } 
 }
